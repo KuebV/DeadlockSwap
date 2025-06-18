@@ -1,0 +1,34 @@
+# Video Files
+*.webm
+*.mp4
+
+# Deadlock Swap Generated Files
+firsttime
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+
+# Others
+~$*
+*~
+CodeCoverage/
+
+# MSBuild Binary and Structured Log
+*.binlog
+*.mp4
+DeadlockSwap/bin/Debug/net8.0/config.json
+DeadlockSwap/bin/Debug/net8.0/imgui.ini
