@@ -11,8 +11,6 @@ namespace DeadlockSwap;
 
 public class MainForm() : Overlay(windowWidth:3840, windowHeight:2160, windowTitle:"Deadlock Swapper")
 {
-	private string GetCurrentMainMenuProfileName() =>
-		Utils.GetProfileNames(Paths.MainMenuInput)[StaticVariables.CurrentMainMenuProfileIndex];
 	
     private void SetupStyle()
     {
@@ -82,13 +80,14 @@ public class MainForm() : Overlay(windowWidth:3840, windowHeight:2160, windowTit
         SetupStyle();
 
         if (StaticVariables.DebugMenu)
-	        ImGui.ShowMetricsWindow();
+	        ImGui.ShowDebugLogWindow();	
 
         if (ImGui.Button("Start Deadlock"))
         {
 	        Process process = new Process();
 	        process.StartInfo.FileName = Paths.Executable();
 	        process.StartInfo.Arguments = StaticVariables.StartupArguments;
+
 	        process.Start();
         }
         
@@ -127,7 +126,17 @@ public class MainForm() : Overlay(windowWidth:3840, windowHeight:2160, windowTit
 	        
 	        if (ImGui.Button("Apply"))
 	        {
-		        File.Copy(Utils.GetProfileVideoPath(), Path.Combine(Paths.MainMenu(), "menu_streets_loop2.webm"), true);
+		        try
+		        {
+			        File.Copy(Utils.GetProfileVideoPath(), Path.Combine(Paths.MainMenu(), "menu_streets_loop2.webm"),
+				        true);
+			        ImGui.DebugLog("\nSwapping Main Menu for " + Utils.GetProfileVideoPath());
+		        }
+		        catch (Exception ex)
+		        {
+			        ImGui.DebugLog("\nDEADLOCK-SWAP Caught Exception: " + ex.Message);
+		        }
+		        
 	        }
 
 	        ImGui.SameLine();
@@ -178,7 +187,7 @@ public class MainForm() : Overlay(windowWidth:3840, windowHeight:2160, windowTit
         ImGui.Indent(); // Again!
 
         if (ImGui.Button("Reset to Default"))
-			File.Copy(Path.Combine(Paths.MainMenuInput, "Default/menu_streets_loop2.webm"), Path.Combine(Paths.MainMenu(), "menu_streets_loop2.webm"), true);  File.Copy(Path.Combine(Paths.MainMenuInput, "Default/menu_streets_loop2.webm"), Path.Combine(Paths.MainMenu(), "menu_streets_loop2.webm"), true);
+			File.Copy(Path.Combine(Paths.MainMenuInput, "Default/menu_streets_loop2.webm"), Path.Combine(Paths.MainMenu(), "menu_streets_loop2.webm"), true);
         
 
         ImGui.End();

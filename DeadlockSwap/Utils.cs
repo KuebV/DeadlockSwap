@@ -30,7 +30,7 @@ public class Utils
     public static string GetProfileVideoPath()
     {
         string getProfile = Directory.GetDirectories(Paths.MainMenuInput)[StaticVariables.CurrentMainMenuProfileIndex];
-        string getVideo = Directory.GetFiles(getProfile)[StaticVariables.CurrentMainMenuVideoIndex];
+        string getVideo = Directory.GetFiles(getProfile, StaticVariables.AllowMp4 ? "*" : "*.webm")[StaticVariables.CurrentMainMenuVideoIndex];
         return getVideo;
     }
 

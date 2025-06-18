@@ -8,6 +8,10 @@
         <ApplicationIcon>eafd47a145d67a244ac72fa0617c3224.ico</ApplicationIcon>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <Optimize>false</Optimize>
+    </PropertyGroup>
+
     <ItemGroup>
       <PackageReference Include="ClickableTransparentOverlay" Version="11.1.0" />
       <PackageReference Include="ImGui.NET" Version="1.91.6.1" />
