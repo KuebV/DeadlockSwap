@@ -9,6 +9,7 @@ public class Configuration
     public string MainMenu_SelectedFile { get; set; }
     public bool ShowWindowOnStartup { get; set; }
     public bool AllowMP4 { get; set; }
+    public bool DebugMenu { get; set; }
 
     public static void WriteDefaultConfiguration()
     {
@@ -20,8 +21,9 @@ public class Configuration
                 MainMenu_SelectedProfile = "Default",
                 MainMenu_SelectedFile = "menu_streets_loop2.webm",
                 ShowWindowOnStartup = true,
-                AllowMP4 = false
-            }));
+                AllowMP4 = false,
+                DebugMenu = false
+            }, new JsonSerializerOptions { WriteIndented = true }));
             sw.Close();
         }
     }
@@ -32,7 +34,7 @@ public class Configuration
     {
         using (StreamWriter sw = new StreamWriter(Paths.ConfigurationFile))
         {
-            sw.WriteLine(JsonSerializer.Serialize(this));
+            sw.WriteLine(JsonSerializer.Serialize(this, new JsonSerializerOptions { WriteIndented = true }));
             sw.Close();
         }
     }

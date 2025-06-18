@@ -55,7 +55,6 @@ public class Program
     public static void Main(string[] args)
     {
         StaticVariables.StartupArguments = string.Join(" ", args);
-        Console.WriteLine("Starting ImGUI");
         Paths.DeadlockInstallPath = FindDeadlockInstallPath();
         
         if (!Path.Exists(Paths.ConfigurationFile))
@@ -67,6 +66,7 @@ public class Program
         StaticVariables.VirtualKey = config.VirtualKey;
         StaticVariables.ShowWindow = config.ShowWindowOnStartup;
         StaticVariables.AllowMp4 = config.AllowMP4;
+        StaticVariables.DebugMenu = config.DebugMenu;
         
         if (!File.Exists(Paths.FirstTimeStartup)) // First time startup
         {

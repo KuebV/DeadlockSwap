@@ -10,6 +10,7 @@ public static class StaticVariables
     public static int CurrentMainMenuVideoIndex;
     public static string VirtualKey;
     public static bool AllowMp4;
+    public static bool DebugMenu;
 
     public static bool ShowWindow { get; set; }
     public static bool ShowWindowOnStartup;

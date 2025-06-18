@@ -81,6 +81,9 @@ public class MainForm() : Overlay(windowWidth:3840, windowHeight:2160, windowTit
         ImGui.Begin("Deadlock Swapper - Written by KuebV");
         SetupStyle();
 
+        if (StaticVariables.DebugMenu)
+	        ImGui.ShowMetricsWindow();
+
         if (ImGui.Button("Start Deadlock"))
         {
 	        Process process = new Process();
@@ -159,7 +162,8 @@ public class MainForm() : Overlay(windowWidth:3840, windowHeight:2160, windowTit
 			        MainMenu_SelectedProfile = StaticVariables.CurrentProfile,
 			        VirtualKey = StaticVariables.VirtualKey,
 			        ShowWindowOnStartup = StaticVariables.ShowWindowOnStartup,
-			        AllowMP4 = StaticVariables.AllowMp4
+			        AllowMP4 = StaticVariables.AllowMp4,
+			        DebugMenu = StaticVariables.DebugMenu
 		        }.Write();
 	        }
         }
